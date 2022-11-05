@@ -150,6 +150,9 @@ main {
   .fight .button {
     width: 75%;
   }
+  .pick__container--player {
+    width: 75%;
+  }
 
   .pick {
     display: flex;
@@ -171,4 +174,8 @@ main {
     background: rgba(0, 0, 0, 0.25);
     border-radius: 50%;
     width: 50%;
+ }
+
+ .hidden {
+    display: none;
  }
