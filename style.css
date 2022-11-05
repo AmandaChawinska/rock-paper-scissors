@@ -28,7 +28,7 @@ header {
     justify-content: space-between;
     align-items: center;
     margin: 0 auto;
-    max-width: 800px;
+    max-width: 600px;
     padding: 12px 24px;
 }
 
@@ -56,4 +56,41 @@ h1 span {
     display: block;
     font-size: 54px;
     line-height: 42px;
+}
+
+main {
+    margin: 0 auto;
+    max-width: 600px;
+    padding: 160px 0;
+}
+
+.options {
+    aspect-ratio: 313/278;
+    background-image: url(./images/bg-triangle.svg);
+    background-size: cover;
+    margin: 0 auto;
+    width: 50%;
+    position: relative;
+}
+
+.options .button {
+    position: absolute;
+}
+
+.button--paper {
+    left: 0;
+    top: 0;
+    transform: translate(-50%, -50%);
+}
+
+.button--scissors {
+    right: 0;
+    top: 0;
+    transform: translate(50%, -50%);
+}
+
+.button--rock {
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 50%);
 }
