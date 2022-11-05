@@ -20,15 +20,15 @@ const renderScore = () => {
 
 const bindPickEvents = () => {
   document.querySelectorAll(".options button").forEach((button) => {
-    button.addEventListener("click", pick);  
+    button.addEventListener("click", pick);
   });
 };
 
 const pick = (e) => {
-    pickByPlayer(e.currentTarget.dataset.pick);
-    pickByAI();
-    hideOptions();
-    showFight();
+  pickByPlayer(e.currentTarget.dataset.pick);
+  pickByAI();
+  hideOptions();
+  showFight();
 };
 
 const pickByPlayer = (pickedOption) => {
@@ -39,45 +39,61 @@ const pickByPlayer = (pickedOption) => {
 };
 
 const pickByAI = () => {
-    const options = ["rock", "paper", "scissors"];
-    const AIPick = options[Math.floor(Math.random()* options.length)];
+  const options = ["rock", "paper", "scissors"];
+  const AIPick = options[Math.floor(Math.random() * options.length)];
 
-    state = {
-        ...state,
-        AIPick,
-    }
+  state = {
+    ...state,
+    AIPick,
+  };
 };
 
 const hideOptions = () => {
-    document.querySelector(".options").classList.add("hidden");
+  document.querySelector(".options").classList.add("hidden");
 };
 
 const showFight = () => {
-    document.querySelector(".fight").classList.remove("hidden");
-    createElementPickedByPlayer();
-    createElementPickedByAI();
+  document.querySelector(".fight").classList.remove("hidden");
+  createElementPickedByPlayer();
+  createElementPickedByAI();
 };
 
-const  createElementPickedByPlayer = () => {
-    const playerPick = state.playerPick;
+const createElementPickedByPlayer = () => {
+  const playerPick = state.playerPick;
 
-    const buttonElement = document.createElement("div");
-    buttonElement.classList.add("button",`button--${playerPick}`);
+  const pickContainerElement = document.querySelector(
+    ".pick__container--player"
+  );
+  pickContainerElement.innerHTML = "";
+  pickContainerElement.appendChild(createPickElement(playerPick));
+};
 
-    const imageContainerElement = document.createElement("div");
-    imageContainerElement.classList.add("button__image-container");
+const createElementPickedByAI = () => {
+    const AIPick = state.AIPick;
 
-    const imgElement = document.createElement("img");
-    imgElement.src = `./images/icon-${playerPick}.svg`;
-    imgElement.alt = playerPick;
-
-    imageContainerElement.appendChild(imgElement);
-
-    buttonElement.appendChild(imageContainerElement);
-
-    const pickContainerElement = document.querySelector(".pick__container--player");
+    const pickContainerElement = document.querySelector(
+      ".pick__container--ai"
+    );
     pickContainerElement.innerHTML = "";
-    pickContainerElement.appendChild(buttonElement);
+    pickContainerElement.appendChild(createPickElement(AIPick));
+};
+
+const createPickElement = (option) => {
+  const pickElement = document.createElement("div");
+  pickElement.classList.add("button", `button--${option}`);
+
+  const imageContainerElement = document.createElement("div");
+  imageContainerElement.classList.add("button__image-container");
+
+  const imgElement = document.createElement("img");
+  imgElement.src = `./images/icon-${option}.svg`;
+  imgElement.alt = option;
+
+  imageContainerElement.appendChild(imgElement);
+
+  pickElement.appendChild(imageContainerElement);
+
+  return pickElement;
 };
 
 const init = () => {
