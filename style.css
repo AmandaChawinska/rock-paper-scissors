@@ -1,11 +1,12 @@
 :root {
-    --color-main: #fff;
-    --color-points: hsl(229, 25%, 31%);
-    --color-score: hsl(229, 64%, 46%);
-    --color-border: hsl(217, 16%, 45%);
+  --color-main: #fff;
+  --color-points: hsl(229, 25%, 31%);
+  --color-score: hsl(229, 64%, 46%);
+  --color-border: hsl(217, 16%, 45%);
+  --color-scissors: hsl(39, 89%, 49%), hsl(40, 84%, 53%);
+  --color-paper: hsl(230, 89%, 62%), hsl(230, 89%, 65%);
+  --color-rock: hsl(349, 71%, 52%), hsl(349, 70%, 56%);
 }
-
-
 
 * {
   box-sizing: border-box;
@@ -14,26 +15,26 @@
 }
 
 body {
-    font-family: 'Barlow Semi Condensed', sans-serif;
-    background: radial-gradient(at top, hsl(214, 47%, 23%), hsl(237, 49%, 15%));
-    min-height: 100vh;
-    min-width: 100vw;
-    padding: 48px;
+  font-family: "Barlow Semi Condensed", sans-serif;
+  background: radial-gradient(at top, hsl(214, 47%, 23%), hsl(237, 49%, 15%));
+  min-height: 100vh;
+  min-width: 100vw;
+  padding: 48px;
 }
 
 header {
-    border: solid 2px var(--color-border);
-    border-radius: 5px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0 auto;
-    max-width: 600px;
-    padding: 12px 24px;
+  border: solid 2px var(--color-border);
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 600px;
+  padding: 12px 24px;
 }
 
 h1 {
-    color: var(--color-main);
+  color: var(--color-main);
 }
 
 h1 span {
@@ -42,55 +43,83 @@ h1 span {
 }
 
 .score {
-    background: var(--color-main);
-    border-radius: 5px;
-    padding: 12px 42px;
+  background: var(--color-main);
+  border-radius: 5px;
+  padding: 12px 42px;
 }
 
 .score span {
-    color: var(--color-score);
+  color: var(--color-score);
 }
 
 .points {
-    color: var(--color-points);
-    display: block;
-    font-size: 54px;
-    line-height: 42px;
+  color: var(--color-points);
+  display: block;
+  font-size: 54px;
+  line-height: 42px;
 }
 
 main {
-    margin: 0 auto;
-    max-width: 600px;
-    padding: 160px 0;
+  margin: 0 auto;
+  max-width: 600px;
+  padding: 160px 0;
 }
 
 .options {
-    aspect-ratio: 313/278;
-    background-image: url(./images/bg-triangle.svg);
-    background-size: cover;
-    margin: 0 auto;
-    width: 50%;
-    position: relative;
+  aspect-ratio: 313/278;
+  background-image: url(./images/bg-triangle.svg);
+  background-size: cover;
+  margin: 0 auto;
+  width: 50%;
+  position: relative;
 }
 
 .options .button {
-    position: absolute;
+  position: absolute;
+  width: 50%;
+}
+
+.button {
+  aspect-ratio: 1/1;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.button img {
+    width: 50%;
+}
+
+.button__image-container {
+  background-color: var(--color-main);
+  border-radius: 50%;
+  height: 80%;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .button--paper {
-    left: 0;
-    top: 0;
-    transform: translate(-50%, -50%);
+  background: linear-gradient(var(--color-paper));
+  left: 0;
+  top: 0;
+  transform: translate(-50%, -50%);
 }
 
 .button--scissors {
-    right: 0;
-    top: 0;
-    transform: translate(50%, -50%);
+  background: linear-gradient(var(--color-scissors));
+  right: 0;
+  top: 0;
+  transform: translate(50%, -50%);
 }
 
 .button--rock {
-    bottom: 0;
-    left: 50%;
-    transform: translate(-50%, 50%);
+  background: linear-gradient(var(--color-rock));
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 50%);
 }
