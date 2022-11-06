@@ -73,26 +73,33 @@ const showFight = () => {
 };
 
 const showResult = () => {
+  const resultTextElement = document.querySelector(".result__text");
   if (state.AIPick === state.playerPick) {
-    console.log("draw");
+    resultTextElement.innerText = "DRAW";
   } else if (winningResultsMap[state.playerPick].includes(state.AIPick)) {
+    resultTextElement.innerText = "YOU WIN";
     localStorage.setItem(playerWinsLSKey, state.playerWins + 1);
     state = {
       ...state,
       playerWins: state.playerWins + 1,
     };
-    console.log("player wins");
   } else {
+    resultTextElement.innerText = "YOU LOSE";
     localStorage.setItem(playerWinsLSKey, state.AIWins + 1);
     state = {
       ...state,
       AIWins: state.AIWins + 1,
     };
-    console.log("ai wins");
   }
+
+  setTimeout(renderResult, 1000);
 
   renderScore();
 };
+
+const  renderResult = () =>{
+  document.querySelector(".result").classList.add("shown");
+}
 
 const createElementPickedByPlayer = () => {
   const playerPick = state.playerPick;

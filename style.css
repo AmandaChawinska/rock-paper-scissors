@@ -176,13 +176,18 @@ section {
   flex-wrap: wrap;
   width: 50%;
   align-items: flex-start;
+  position: relative;
 }
 
 .pick__title {
+  bottom: 100%;
+  left: 50%;
   display: block;
   padding-bottom: 36px;
   text-align: center;
   width: 100%;
+  position: absolute;
+  transform: translate(-50%, 0);
 }
 
 .pick__placeholder {
@@ -194,4 +199,32 @@ section {
 
 .hidden {
   display: none;
+}
+
+.result {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  overflow: hidden;
+  transform: scaleX(0);
+  transition: transform 0.3s;
+}
+
+.result.shown {
+  transform: scaleX(1);
+}
+
+.result__text {
+  font-size: 32px;
+  font-weight: 700;
+  text-align: center;
+  width: 100%;
+}
+
+.result__button {
+  background: var(--color-main);
+  border: none;
+  color: hsl(349, 71%, 52%);
+  padding: 8px 24px; 
+  border-radius: 3px;
 }
