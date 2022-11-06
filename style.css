@@ -176,7 +176,17 @@ section {
   flex-wrap: wrap;
   width: 50%;
   align-items: flex-start;
-  position: relative;
+  position: relative;  
+  transform: translate(0,0);
+  transition: transform 0.3s;
+}
+
+.pick--ai.moved {
+  transform: translate(25%, 0);
+}
+
+.pick--player.moved{
+  transform: translate(-25%, 0);
 }
 
 .pick__title {
@@ -205,13 +215,16 @@ section {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  left: 50%;
   overflow: hidden;
-  transform: scaleX(0);
+  position: absolute;
+  top: 50%;
+  transform: scaleX(0) translate(-50%, -50%);
   transition: transform 0.3s;
 }
 
 .result.shown {
-  transform: scaleX(1);
+  transform: scaleX(1) translate(-50%, -50%);
 }
 
 .result__text {

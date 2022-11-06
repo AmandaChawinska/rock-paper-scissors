@@ -99,7 +99,10 @@ const showResult = () => {
 
 const  renderResult = () =>{
   document.querySelector(".result").classList.add("shown");
-}
+  document.querySelector(
+    ".pick--player").classList.add('moved');
+  document.querySelector(".pick--ai").classList.add('moved');
+};
 
 const createElementPickedByPlayer = () => {
   const playerPick = state.playerPick;
