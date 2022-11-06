@@ -13,8 +13,8 @@ const winningResultsMap = {
 };
 
 let state = {
-  playerWins: localStorage.getItem(playerWinsLSKey) || 0,
-  AIWins: localStorage.getItem(AIWinsLSKey) || 0,
+  playerWins: Number(localStorage.getItem(playerWinsLSKey)) || 0,
+  AIWins: Number(localStorage.getItem(AIWinsLSKey)) || 0,
   playerPick: null,
   AIPick: null,
 };
@@ -70,10 +70,14 @@ const showResult = () => {
   if (state.AIPick === state.playerPick) {
     console.log("draw");
   } else if (winningResultsMap[state.playerPick].includes(state.AIPick)) {
+    localStorage.setItem(playerWinsLSKey, state.playerWins + 1);
     console.log("player wins");
   } else {
+    localStorage.setItem(playerWinsLSKey, state.AIWins + 1);
     console.log("ai wins");
   }
+
+  renderScore();
 };
 
 const createElementPickedByPlayer = () => {
