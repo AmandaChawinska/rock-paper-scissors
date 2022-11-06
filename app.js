@@ -71,9 +71,17 @@ const showResult = () => {
     console.log("draw");
   } else if (winningResultsMap[state.playerPick].includes(state.AIPick)) {
     localStorage.setItem(playerWinsLSKey, state.playerWins + 1);
+    state = {
+      ...state,
+      playerWins: state.playerWins +1,
+    };
     console.log("player wins");
   } else {
     localStorage.setItem(playerWinsLSKey, state.AIWins + 1);
+    state = {
+      ...state,
+      AIWins: state.AIWins +1,
+    };
     console.log("ai wins");
   }
 
