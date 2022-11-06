@@ -6,6 +6,12 @@
 const playerWinsLSKey = "playerWins";
 const AIWinsLSKey = "AIWins";
 
+const winningResultsMap = {
+  paper: ["rock"],
+  rock: ["scissors"],
+  scissors: ["paper"],
+};
+
 let state = {
   playerWins: localStorage.getItem(playerWinsLSKey) || 0,
   AIWins: localStorage.getItem(AIWinsLSKey) || 0,
@@ -56,6 +62,18 @@ const showFight = () => {
   document.querySelector(".fight").classList.remove("hidden");
   createElementPickedByPlayer();
   createElementPickedByAI();
+
+  showResult();
+};
+
+const showResult = () => {
+  if (state.AIPick === state.playerPick) {
+    console.log("draw");
+  } else if (winningResultsMap[state.playerPick].includes(state.AIPick)) {
+    console.log("player wins");
+  } else {
+    console.log("ai wins");
+  }
 };
 
 const createElementPickedByPlayer = () => {
@@ -69,13 +87,11 @@ const createElementPickedByPlayer = () => {
 };
 
 const createElementPickedByAI = () => {
-    const AIPick = state.AIPick;
+  const AIPick = state.AIPick;
 
-    const pickContainerElement = document.querySelector(
-      ".pick__container--ai"
-    );
-    pickContainerElement.innerHTML = "";
-    pickContainerElement.appendChild(createPickElement(AIPick));
+  const pickContainerElement = document.querySelector(".pick__container--ai");
+  pickContainerElement.innerHTML = "";
+  pickContainerElement.appendChild(createPickElement(AIPick));
 };
 
 const createPickElement = (option) => {
